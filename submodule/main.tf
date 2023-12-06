@@ -9,8 +9,9 @@ resource "aws_subnet" "main" {
 
 }
 resource "aws_route_table" "example" {
-  vpc_id = var.vpc_id
   for_each = var.subnets
+  vpc_id = var.vpc_id
+
   tags = {
     Name = each.key
   }
