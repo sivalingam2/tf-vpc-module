@@ -11,9 +11,7 @@ module "subnets" {
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
-  tags = {
-    Name = main
-  }
+
 }
 
 resource "aws_route" "igw" {
@@ -66,7 +64,7 @@ resource "aws_security_group" "allow_tls" {
     from_port        = 22
     to_port          = 22
     protocol         = "tcp"
-    cidr_blocks      = ["0.0.00./0"]
+    cidr_blocks      = ["0.0.0.0/0"]
 
   }
 
