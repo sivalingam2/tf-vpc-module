@@ -10,5 +10,6 @@ locals {
   app_route_table_ids = [ for i,j in lookup(lookup(module.subnets, "app", null ), "route_table_ids", null) : j.id]
   db_route_table_ids = [ for i,j in lookup(lookup(module.subnets, "db", null ), "route_table_ids", null) : j.id]
   private_route_table_ids = concat(local.app_route_table_ids,local.db_route_table_ids)
-
+ #tags
+  tags = merge(var.tags, {tf-module-name = "vpc"})
 }
