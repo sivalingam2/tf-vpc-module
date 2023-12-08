@@ -1,6 +1,6 @@
 resource "aws_vpc" "main" {
   cidr_block = var.cidr
-  tags = merge(local.tags, "${var.env}-vpc")
+  tags = merge(var.tags, "${var.env}-vpc")
 }
 module "subnets" {
   source = "./submodule"
